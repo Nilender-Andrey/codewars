@@ -41,3 +41,41 @@ function dataReverse(data) {
 console.log(dataReverse(data1)); // [ 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1,]
 console.log(dataReverse(data2)); //  [0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0]
  */
+
+//* Bingo Card
+/* 
+function getCard() {
+  const bingo = [
+    { B: [1, 15] },
+    { I: [16, 30] },
+    { N: [31, 45] },
+    { G: [46, 60] },
+    { O: [61, 75] },
+  ];
+
+  return bingo.reduce((res, item) => {
+    const key = Object.keys(item)[0];
+
+    randomArr(item[key][0], item[key][1], key).forEach((item) =>
+      res.push(key + item),
+    );
+    return res;
+  }, []);
+}
+
+function randomInteger(min, max) {
+  return Math.floor(min + Math.random() * (max + 1 - min));
+}
+
+function randomArr(min, max, key) {
+  const randomArr = key === 'N' ? Array.from(Array(4)) : Array.from(Array(5));
+
+  return randomArr.reduce((arr) => {
+    do {
+      res = randomInteger(min, max);
+    } while (arr.includes(res));
+    return [...arr, res];
+  }, []);
+}
+
+console.log(getCard()); */
