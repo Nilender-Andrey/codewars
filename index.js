@@ -92,7 +92,7 @@ Write a function that takes a string and outputs a strings of 1's and 0's where 
 
 All non-vowels including non alpha characters (spaces,commas etc.) should be included.
  */
-
+/* 
 function vowelOne(s) {
   return s
     .toLowerCase()
@@ -103,3 +103,41 @@ function vowelOne(s) {
 
 console.log(vowelOne('vowelOne')); // "01010101"
 console.log(vowelOne('123, arou')); // "000001011"
+ */
+
+//* Count strings in objects
+/* 
+Create a function strCount (takes an object as argument) that will count all string values inside an object. For example:
+
+strCount({
+  first: "1",
+  second: "2",
+  third: false,
+  fourth: ["anytime",2,3,4],
+  fifth:  null
+  })
+  //returns 3
+*/
+/* 
+function strCount(obj) {
+  let count = 0;
+
+  for (key in obj) {
+    if (typeof obj[key] === 'string') count++;
+    if (typeof obj[key] === 'object') count = count + strCount(obj[key]);
+  }
+  return count;
+}
+
+console.log(
+  strCount({
+    first: '1',
+    second: '2',
+    third: false,
+    fourth: ['anytime', 2, 3, 4],
+    fifth: null,
+    sixth: undefined,
+    seventh: {},
+  }),
+);
+ */
