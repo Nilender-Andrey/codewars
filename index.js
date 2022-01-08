@@ -96,3 +96,12 @@ const countBits = (n) =>
 
 console.log(countBits(7)); // 3
  */
+
+function whatTimeIsIt(angle) {
+  let hour = Math.floor(angle / 30);
+  hour = hour === 0 ? 12 : hour;
+  const min = Math.floor((angle % 30) * 2);
+  return `${hour < 10 ? '0' + hour : hour}:${min < 10 ? '0' + min : min}`;
+}
+
+console.log(whatTimeIsIt(271)); //09:02
