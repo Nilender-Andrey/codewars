@@ -277,3 +277,72 @@ console.log(likes(['Jacob', 'Alex'])); // 'Jacob and Alex like this'
 console.log(likes(['Max', 'John', 'Mark'])); // 'Max, John and Mark like this'
 console.log(likes(['Alex', 'Jacob', 'Mark', 'Max'])); // 'Alex, Jacob and 2 others like this'
  */
+
+//* Base Conversion
+/* 
+In this kata you have to implement a base converter, which converts positive integers between arbitrary bases / alphabets.
+
+The function convert() should take an input (string), the source alphabet (string) and the target alphabet (string). 
+You can assume that the input value always consists of characters from the source alphabet. You don't need to validate it. 
+
+Additional Notes:
+
+The maximum input value can always be encoded in a number without loss of precision in JavaScript. In Haskell, intermediate results will probably be too large for Int.
+The function must work for any arbitrary alphabets, not only the pre-defined ones
+You don't have to consider negative numbers
+*/
+
+//! https://programforyou.ru/calculators/number-systems
+
+var Alphabet = {
+  BINARY: '01',
+  OCTAL: '01234567',
+  DECIMAL: '0123456789',
+  HEXA_DECIMAL: '0123456789abcdef',
+  ALPHA_LOWER: 'abcdefghijklmnopqrstuvwxyz',
+  ALPHA_UPPER: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  ALPHA: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  ALPHA_NUMERIC:
+    '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+};
+
+var bin = Alphabet.BINARY,
+  oct = Alphabet.OCTAL,
+  dec = Alphabet.DECIMAL,
+  hex = Alphabet.HEXA_DECIMAL,
+  allow = Alphabet.ALPHA_LOWER,
+  alup = Alphabet.ALPHA_UPPER,
+  alpha = Alphabet.ALPHA,
+  alnum = Alphabet.ALPHA_NUMERIC;
+
+function convert(input, source, target) {
+  const baseSource = source.length;
+
+  const result = input.split('').reduce((sum, item, index) => {
+    sum += source.indexOf(item) * baseSource ** (input.length - index - 1);
+    return sum;
+  }, 0);
+
+  return toAnySystem(result, target);
+}
+
+function toAnySystem(decimal, target, arr = []) {
+  const base = target.length;
+
+  const num = Math.trunc(decimal / base);
+  const remainder = decimal % base;
+
+  if (num < base) {
+    arr.unshift(target[remainder]);
+    num && arr.unshift(target[num]);
+  } else {
+    arr.unshift(target[remainder]);
+    toAnySystem(num, target, arr);
+  }
+  return arr.join('');
+}
+
+console.log(convert('15', dec, bin)); // '1111', '"15" dec -> bin'
+console.log(convert('15', dec, oct)); //  '17', '"15" dec -> oct'
+console.log(convert('1010', bin, dec)); // '10', '"1010" bin -> dec'
+console.log(convert('1010', bin, hex)); //  'a', '"1010" bin -> hex'
