@@ -291,7 +291,7 @@ The maximum input value can always be encoded in a number without loss of precis
 The function must work for any arbitrary alphabets, not only the pre-defined ones
 You don't have to consider negative numbers
 */
-
+/* 
 //! https://programforyou.ru/calculators/number-systems
 
 var Alphabet = {
@@ -319,8 +319,9 @@ function convert(input, source, target) {
   const baseSource = source.length;
 
   const result = input.split('').reduce((sum, item, index) => {
-    sum += source.indexOf(item) * baseSource ** (input.length - index - 1);
-    return sum;
+    return (
+      sum + source.indexOf(item) * baseSource ** (input.length - index - 1)
+    );
   }, 0);
 
   return toAnySystem(result, target);
@@ -346,3 +347,51 @@ console.log(convert('15', dec, bin)); // '1111', '"15" dec -> bin'
 console.log(convert('15', dec, oct)); //  '17', '"15" dec -> oct'
 console.log(convert('1010', bin, dec)); // '10', '"1010" bin -> dec'
 console.log(convert('1010', bin, hex)); //  'a', '"1010" bin -> hex'
+ */
+
+//* Consecutive strings
+// https://www.codewars.com/kata/56a5d994ac971f1ac500003e/train/javascript
+/* 
+You are given an array(list) strarr of strings and an integer k. 
+Your task is to return the first longest string consisting of k consecutive strings taken in the array.
+
+n being the length of the string array, if n = 0 or k > n or k <= 0 return "" (return Nothing in Elm).
+
+Note
+consecutive strings : follow one after another without an interruption
+ */
+/* 
+function longestConsec(strarr, k) {
+  if (strarr.length === 0 || k > strarr.length || k <= 0) return '';
+
+  let max = '';
+  for (let i = 0; i < strarr.length; i++) {
+    if (i + k > strarr.length) return max;
+
+    let str = strarr[i];
+
+    for (let j = 1; j < k; j++) {
+      str += strarr[i + j];
+    }
+    if (max.length < str.length) max = str;
+  }
+  return max;
+}
+
+console.log(
+  longestConsec(['zone', 'abigail', 'theta', 'form', 'libe', 'zas'], 2),
+); //"abigailtheta"
+
+console.log(
+  longestConsec(
+    [
+      'ejjjjmmtthh',
+      'zxxuueeg',
+      'aanlljrrrxx',
+      'dqqqaaabbb',
+      'oocccffuucccjjjkkkjyyyeehh',
+    ],
+    1,
+  ),
+); // "oocccffuucccjjjkkkjyyyeehh")
+ */
