@@ -395,3 +395,32 @@ console.log(
   ),
 ); // "oocccffuucccjjjkkkjyyyeehh")
  */
+/* 
+function createItemsCard() {
+  const cardItem = document.createElement('div');
+  const cardItemBack = document.createElement('div');
+  const cardItemFront = document.createElement('div');
+  const cardImg = document.createElement('img');
+  const containerСards = document.querySelector('.container__cards');
+  cardItem.classList.add('card__item');
+  cardItemBack.classList.add('card__item-back');
+  cardItemFront.classList.add('card__item-front');
+  cardImg.classList.add('card__img');
+  cardImg.src =
+    'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMDAwMjl8MHwxfHNlYXJjaHwxfHwlMjJpdGFseSUyMnxlbnwwfHx8fDE2NDUwMDU3NTE&ixlib=rb-1.2.1&q=80&w=1080';
+  cardImg.alt = 'PhotoCard';
+  cardItem.setAttribute('data-facecard', 'img1');
+
+  cardItemBack.append(cardImg);
+  cardItem.append(cardItemBack, cardItemFront);
+
+  console.log(cardItem);
+
+  for (let i = 0; i < 16; i++) {
+    containerСards.innerHTML += cardItem.outerHTML;
+  }
+
+}
+
+createItemsCard();
+ */
