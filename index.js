@@ -162,3 +162,89 @@ console.log(getDecimal(0.2)); //0.2
 console.log(getDecimal(4.5)); //0.5
 console.log(getDecimal(-10)); //0
  */
+
+//* Absent vowel
+
+/* 
+Your job is to figure out the index of which vowel is missing from a given string:
+
+A has an index of 0,
+E has an index of 1,
+I has an index of 2,
+O has an index of 3,
+U has an index of 4.
+Notes: There is no need for string validation and every sentence given will contain all vowels but one. Also, you won't need to worry about capitals.
+
+Examples
+"John Doe hs seven red pples under his bsket"          =>  0  ; missing: "a"
+"Bb Smith sent us six neatly arranged range bicycles"  =>  3  ; missing: "o"
+*/
+/* 
+function absentVowel(x) {
+  return [
+    [0, 'a'],
+    [1, 'e'],
+    [2, 'i'],
+    [3, 'o'],
+    [4, 'u'],
+  ].find((item) => x.toLowerCase().indexOf(item[1]) === -1)[0];
+}
+
+console.log(absentVowel('John Doe hs seven red pples under his bsket')); // 0
+console.log(absentVowel('Bb Smith sent us six neatly arranged range bicycles')); // 3
+ */
+/* 
+function absentVowel(x) {
+  return ['a', 'e', 'i', 'o', 'u'].findIndex((item) => !x.includes(item));
+}
+
+console.log(absentVowel('John Doe hs seven red pples under his bsket')); // 0
+console.log(absentVowel('Bb Smith sent us six neatly arranged range bicycles')); // 3
+ */
+
+//* Get the Middle Character
+
+/* 
+You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. 
+If the word's length is even, return the middle 2 characters.
+
+#Examples:
+
+Kata.getMiddle("test") should return "es"
+
+Kata.getMiddle("testing") should return "t"
+
+Kata.getMiddle("middle") should return "dd"
+
+Kata.getMiddle("A") should return "A"
+#Input
+
+A word (string) of length 0 < str < 1000 (In javascript you may get slightly more than 1000 in some test cases due to an error in the test cases). 
+You do not need to test for this. This is only here to tell you that you do not need to worry about your solution timing out.
+
+#Output
+
+The middle character(s) of the word represented as a string.
+*/
+
+/* 
+function getMiddle(s) {
+  const index =
+    s.length % 2 === 0
+      ? [s.length / 2 - 1, s.length / 2]
+      : [Math.floor(s.length / 2)];
+
+  return index.map((item) => s[item]).join('');
+} 
+*/
+
+/* 
+function getMiddle(s) {
+  return s.slice((s.length - 1) / 2, s.length / 2 + 1);
+}
+
+console.log(getMiddle('test')); // "es"
+console.log(getMiddle('testing')); // "t"
+console.log(getMiddle('middle')); // "dd"
+console.log(getMiddle('A')); // "A"
+ */
