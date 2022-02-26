@@ -584,7 +584,7 @@ s1:         "codewars" =>  true  -> match 'code', 'wars'
 s2:         "codewar"  =>  false -> match 'code', unmatched 'war'
 One word from the dictionary can be used several times.
 */
-
+/* 
 var validWord = function (dictionary, word) {
   const length = dictionary.reduce(
     (str, item) => (str += word.includes(item) ? item : ''),
@@ -593,7 +593,7 @@ var validWord = function (dictionary, word) {
 
   return length > word.length;
 };
-
+ */
 //console.log(validWord(['code', 'wars'], 'codewars')); // true
 // console.log(['wars', 'code'], 'codewars'); // true
 // console.log(['code', 'wars'], 'codecodewars'); // true
@@ -607,7 +607,7 @@ var validWord = function (dictionary, word) {
 // console.log(['code', 'wars'], 'code'); // true
 // console.log(['a', 'b', 'c', 'd', 'e', 'f'], 'abcdef'); // true
 // console.log(['a', 'b', 'c', 'd', 'e', 'f'], 'abcdefg'); // false
-console.log(validWord(['ab', 'a', 'bc'], 'abc')); // true
+//console.log(validWord(['ab', 'a', 'bc'], 'abc')); // true
 //console.log(validWord(['ab', 'bc'], 'abc')); // false
 
 /* 
@@ -663,4 +663,33 @@ function x() {
 }
 
 console.log(x());
+ */
+
+//* Can you keep a secret?
+
+/* 
+There's no such thing as private properties on a coffeescript object! But, maybe there are?
+
+Implement a function createSecretHolder(secret) which accepts any value as secret and returns an object with ONLY two methods
+
+getSecret() which returns the secret
+setSecret() which sets the secret
+obj = createSecretHolder(5)
+obj.getSecret() # returns 5
+obj.setSecret(2)
+obj.getSecret() # returns 2
+*/
+/* 
+function createSecretHolder(secret) {
+  return {
+    setSecret: (x) => (secret = x),
+    getSecret: () => secret,
+  };
+}
+
+obj = createSecretHolder();
+
+console.log(obj.getSecret()); // 5
+obj.setSecret(2);
+console.log(obj.getSecret()); // 2
  */
