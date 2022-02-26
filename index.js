@@ -530,3 +530,137 @@ function solution(number) {
 
 console.log(solution(10));
  */
+
+//* Array Deep Count
+
+/* 
+Array.prototype.length will give you the number of top-level elements in an array.
+
+Your task is to create a function deepCount that returns the number of ALL elements within an array, including any within inner-level arrays.
+
+For example:
+
+deepCount([1, 2, 3]);  
+//>>>>> 3
+deepCount(["x", "y", ["z"]]);  
+//>>>>> 4
+deepCount([1, 2, [3, 4, [5]]]);  
+//>>>>> 7
+*/
+/* 
+function deepCount(a, arr = []) {
+  if (a.length <= 0) return arr.length;
+
+  a.forEach((item) => {
+    if (Array.isArray(item)) {
+      arr.push(item);
+      deepCount(item, arr);
+    } else arr.push(item);
+  });
+
+  return arr.length;
+}
+
+console.log(deepCount([])); // 0
+console.log(deepCount([1, 2, 3])); // 3
+console.log(deepCount(['x', 'y', ['z']])); // 4
+console.log(deepCount([1, 2, [3, 4, [5]]])); // 7
+console.log(deepCount([[[[[[[[[]]]]]]]]])); // 8
+ */
+
+//* Valid string
+
+/* 
+You are given a sequence of valid words and a string. Test if the string is made up by one or more words from the array.
+
+Task
+Test if the string can be entirely formed by consecutively concatenating words of the dictionary.
+
+For example:
+
+dictionary: ["code", "wars"]
+
+s1:         "codewars" =>  true  -> match 'code', 'wars'
+s2:         "codewar"  =>  false -> match 'code', unmatched 'war'
+One word from the dictionary can be used several times.
+*/
+
+var validWord = function (dictionary, word) {
+  const length = dictionary.reduce(
+    (str, item) => (str += word.includes(item) ? item : ''),
+    '',
+  ).length;
+
+  return length > word.length;
+};
+
+//console.log(validWord(['code', 'wars'], 'codewars')); // true
+// console.log(['wars', 'code'], 'codewars'); // true
+// console.log(['code', 'wars'], 'codecodewars'); // true
+//console.log(validWord(['code', 'wars'], 'codewar')); // false
+// console.log(['code', 'wars'], 'codewarscode'); // true
+// console.log(['code', 'star', 'wars'], 'starwars'); // true
+// console.log(['Star', 'Code', 'Wars'], 'StarCodeWars'); // true
+// console.log(['Star', 'Code', 'Wars'], 'WarsStarCode'); // true
+// console.log(['Star', 'Code', 'Wars'], 'CodeStarsWar'); // false
+// console.log([], 'codewars'); // false
+// console.log(['code', 'wars'], 'code'); // true
+// console.log(['a', 'b', 'c', 'd', 'e', 'f'], 'abcdef'); // true
+// console.log(['a', 'b', 'c', 'd', 'e', 'f'], 'abcdefg'); // false
+console.log(validWord(['ab', 'a', 'bc'], 'abc')); // true
+//console.log(validWord(['ab', 'bc'], 'abc')); // false
+
+/* 
+  return !!!dictionary.reduce((str, item) => {
+    str = str.replaceAll(item, '');
+    return str;
+  }, word);
+};
+var validWord = function (dictionary, word) {
+  let strLength = word.length;
+
+  for (let i = 0; i < dictionary.length; i++) {
+    word = word.replace(dictionary[i], '');
+    if (strLength > word.length) {
+      strLength = word.length;
+      i--;
+    }
+  }
+  return !Boolean(word);
+*/
+
+//* Closures and Scopes
+
+/* 
+We want to create a function, which returns an array of functions, which return their index in the array. For better understanding, here an example:
+
+var callbacks = createFunctions(5); // create an array, containing 5 functions
+
+callbacks[0](); // must return 0
+callbacks[3](); // must return 3
+We already implemented that function, but when we actually run the code, the result doesn't look like what we expected. Can you spot, what's wrong with it? 
+A test fixture is also available
+*/
+/* 
+function createFunctions(n) {
+  let callbacks = [];
+
+  for (let i = 0; i < n; i++) {
+    callbacks.push(function () {
+      return i;
+    });
+  }
+
+  return callbacks;
+}
+
+function x() {
+  let callbacks = createFunctions(5);
+
+  for (let i = 0; i < callbacks.length; i++) {
+    callbacks[i]();
+  }
+}
+
+console.log(x());
+ */
