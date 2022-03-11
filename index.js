@@ -387,3 +387,83 @@ console.log(tail([1])); // []
 console.log(init([1, 5, 7, 9])); // [1,5,7]
 console.log(last([7, 2])); // 2
  */
+
+//* Javascript Mathematician
+/* 
+You are writing a function that takes two sets of arguments of arbitrary length. 
+The return value will be the sum of the values of all of the arguments.
+
+The function should contain at least 1 argument per set.
+
+calculate(1)(1) // should return 2
+calculate(1,1)(1) // should return 3
+calculate(1,1)(1,-1) // should return 2
+calculate(2,4)(3,7,1) // should return 17
+ */
+/* 
+function calculate() {
+  const arg1 = [...arguments];
+  return function () {
+    const arg2 = [...arguments];
+    return arg2.concat(arg1).reduce((sum, item) => (sum += item));
+  };
+}
+
+console.log(calculate(1)(1)); //2
+console.log(calculate(1, 1)(1)); // 3
+console.log(calculate(1, 1)(1, -1)); //2
+console.log(calculate(2, 4)(3, 7, 1)); //17
+ */
+
+//* The Coupon Code
+/*
+Story
+Your online store likes to give out coupons for special occasions. 
+Some customers try to cheat the system by entering invalid codes or using expired coupons.
+
+Task
+Your mission:
+Write a function called checkCoupon which verifies that a coupon code is valid and not expired.
+
+A coupon is no more valid on the day AFTER the expiration date. 
+All dates will be passed as strings in this format: "MONTH DATE, YEAR".
+
+Examples:
+checkCoupon("123", "123", "July 9, 2015", "July 9, 2015")  ===  true
+checkCoupon("123", "123", "July 9, 2015", "July 2, 2015")  ===  false
+*/
+/* 
+function checkCoupon(enteredCode, correctCode, currentDate, expirationDate) {
+  return enteredCode !== correctCode ||
+    new Date(currentDate) > new Date(expirationDate)
+    ? false
+    : true;
+}
+
+console.log(checkCoupon('123', '123', 'September 5, 2014', 'October 1, 2014')); // true
+console.log(checkCoupon('123a', '123', 'September 5, 2014', 'October 1, 2014')); // false
+ */
+
+//* Unlucky Days
+/* 
+function unluckyDays(year) {
+  let friday = 0;
+  for (let i = 0; i <= 11; i++) {
+    if (new Date(year, i, 13).getUTCDay() == 5) {
+      friday++;
+    }
+  }
+  return friday;
+}
+ */
+/* console.log(unluckyDays(1586)); // "should be: 1"
+console.log(unluckyDays(1001)); // "should be: 3"
+console.log(unluckyDays(2819)); // "should be: 2"
+console.log(unluckyDays(2792)); // "should be: 2"
+console.log(unluckyDays(2723)); // "should be: 2"
+console.log(unluckyDays(1909)); // "should be: 1"
+console.log(unluckyDays(1812)); // "should be: 2"
+console.log(unluckyDays(1618)); // "should be: 2"
+console.log(unluckyDays(2132)); // "should be: 1"
+console.log(unluckyDays(2065)); // "should be: 3"
+console.log(unluckyDays(2625)); // "should be: 2" */
