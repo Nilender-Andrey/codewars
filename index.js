@@ -923,6 +923,14 @@ output = [
   ["out of date yogurt"]
 ]
 */
+/* 
+output = [
+  ["wine bottle", "amazon box", "beer bottle"],
+  ["wine bottle", "beer bottle"],
+  ["rotten apples", "out of date yogurt"],
+  ["out of date yogurt"]
+]
+
 
 function recycle(array) {
   return ['paper', 'glass', 'organic', 'plastic'].map((item) =>
@@ -944,13 +952,5 @@ const input = [
   { type: 'beer bottle', material: 'glass', secondMaterial: 'paper' },
 ];
 
-/* 
-output = [
-  ["wine bottle", "amazon box", "beer bottle"],
-  ["wine bottle", "beer bottle"],
-  ["rotten apples", "out of date yogurt"],
-  ["out of date yogurt"]
-]
-*/
-
 console.log(recycle(input));
+ */
